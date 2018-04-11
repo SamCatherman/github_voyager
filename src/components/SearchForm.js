@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SearchForm = props => (
-<div>
+<div className="col-md-4">
   <input type='text'
     name='search'
     placeholder='search for a github user...'

@@ -40,7 +40,7 @@ class SearchContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="row">
         <SearchForm
           value={this.state.search}
           handleFormSubmit={this.handleFormSubmit}
@@ -49,6 +49,7 @@ class SearchContainer extends Component {
         <Result username={this.state.result.login}
                 img={this.state.result.avatar_url}
                 type={this.state.result.type}
+                location={this.state.result.location}
         />
       </div>
     )
