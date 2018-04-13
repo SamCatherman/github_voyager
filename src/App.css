@@ -1,12 +1,12 @@
 html, body, #app, #app>div {
-  height: 100%
+  height: 100%;
+  background-color: #EDF1EC;
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: 2fr;
   text-align: center;
-  background-color: #EDF1EC;
   height: 100%;
 }
 
@@ -28,9 +28,4 @@ a {
 img {
   max-width: 50%;
   margin-top: 1em;
-}
-
-.footer {
-  height:8em;
-  margin: auto;
 }
