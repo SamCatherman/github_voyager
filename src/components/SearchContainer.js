@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SearchForm from "./SearchForm";
 import Result from "./Result";
 import API from "../utils/API";
+import Footer from "./Footer"
 
 class SearchContainer extends Component {
   state = {
@@ -11,8 +12,6 @@ class SearchContainer extends Component {
 
   componentDidMount() {
     this.searchGithub('Github')
-    console.log("component mounted")
-    console.log("state inside cdm", this.state);
   };
 
   searchGithub = query => {
@@ -21,7 +20,6 @@ class SearchContainer extends Component {
         result: res.data
       }))
       .catch(err => console.log(err))
-      console.log("query made", query)
   };
 
   handleInputChange = event => {
@@ -33,14 +31,14 @@ class SearchContainer extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log("search: ", this.state.search);
     this.searchGithub(this.state.search);
     console.log("result: ", this.state.result);
   };
 
+
   render() {
     return (
-      <div className="row">
+      <div className="grid-container">
         <SearchForm
           value={this.state.search}
           handleFormSubmit={this.handleFormSubmit}
@@ -50,7 +48,10 @@ class SearchContainer extends Component {
                 img={this.state.result.avatar_url}
                 type={this.state.result.type}
                 location={this.state.result.location}
+                page={this.state.result.html_url}
+                fullName={this.state.result.name}
         />
+        <Footer />
       </div>
     )
   }
