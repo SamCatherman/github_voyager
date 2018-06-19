@@ -15,9 +15,12 @@ class SearchContainer extends Component {
 
   searchGithub = query => {
     API.search(query)
-      .then(res => this.setState({
-        result: res.data
-      }))
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+        result: json
+      })
+    })
       .catch(err => console.log(err))
   };
 
