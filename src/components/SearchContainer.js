@@ -54,6 +54,7 @@ class SearchContainer extends Component {
           page={result.html_url}
           fullName={result.name}
           pubRepos={result.public_repos}
+          email={result.email}
         />
       </div>
     );

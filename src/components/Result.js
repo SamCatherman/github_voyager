@@ -7,16 +7,20 @@ const Result = ({
   type,
   page,
   img,
-  pubRepos
+  pubRepos,
+  email
 }) => (
   <div className="result-container">
     <h4>{username}</h4>
-    <p>
-      {fullName}, {location}
-    </p>
+    {fullName && location ? (
+      <p>
+        {fullName}, {location}
+      </p>
+    ) : null}
     <p>{type}</p>
     <p>Public Repositories: {pubRepos}</p>
     <a href={page}>Visit {username}</a>
+    <a href={`mailto:${email}`}>Contact {username}</a>
     <img src={img} alt={username} />
   </div>
 );
