@@ -1,14 +1,18 @@
-import React from 'react';
+import React from "react";
 
-const SearchForm = props => (
-<div>
-  <input type='text'
-    name='search'
-    placeholder='find a github user...'
-    value={props.value}
-    onChange={props.handleInputChange}/>
-  <button className='button' type='submit' onClick={props.handleFormSubmit}>Find User</button>
-</div>
-)
+const SearchForm = ({ handleFormSubmit, value, handleInputChange }) => (
+  <form onSubmit={handleFormSubmit}>
+    <input
+      type="text"
+      name="search"
+      placeholder="find a github user..."
+      value={value}
+      onChange={handleInputChange}
+    />
+    <button className="button" type="submit">
+      Find User
+    </button>
+  </form>
+);
 
 export default SearchForm;

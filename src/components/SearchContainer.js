@@ -5,30 +5,30 @@ import API from "../utils/API";
 
 class SearchContainer extends Component {
   state = {
-      result: {},
-      search: ""
-    }
+    result: {},
+    search: ""
+  };
 
   componentDidMount() {
-    this.searchGithub('Github')
-  };
+    this.searchGithub("Github");
+  }
 
   searchGithub = query => {
     API.search(query)
       .then(res => res.json())
-      .then(json => {
+      .then(data => {
         this.setState({
-        result: json
+          result: data
+        });
       })
-    })
-      .catch(err => console.log(err))
+      .catch(err => console.err(err));
   };
 
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
-    })
+    });
   };
 
   handleFormSubmit = event => {
@@ -37,8 +37,8 @@ class SearchContainer extends Component {
     console.log("result: ", this.state.result);
   };
 
-
   render() {
+    const result = this.state.result;
     return (
       <div className="grid-container">
         <SearchForm
@@ -46,18 +46,18 @@ class SearchContainer extends Component {
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <Result username={this.state.result.login}
-                img={this.state.result.avatar_url}
-                type={this.state.result.type}
-                location={this.state.result.location}
-                page={this.state.result.html_url}
-                fullName={this.state.result.name}
+        <Result
+          username={result.login}
+          img={result.avatar_url}
+          type={result.type}
+          location={result.location}
+          page={result.html_url}
+          fullName={result.name}
+          pubRepos={result.public_repos}
         />
       </div>
-    )
+    );
   }
-
-
 }
 
 export default SearchContainer;
