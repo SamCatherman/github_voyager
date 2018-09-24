@@ -20,7 +20,9 @@ const Result = ({
     <p>{type}</p>
     <p>Public Repositories: {pubRepos}</p>
     <a href={page}>Visit {username}</a>
-    <a href={`mailto:${email}`}>Contact {username}</a>
+    {{ email } === null ? (
+      <a href={`mailto:${email}`}>Contact {username}</a>
+    ) : null}
     <img src={img} alt={username} />
   </div>
 );
