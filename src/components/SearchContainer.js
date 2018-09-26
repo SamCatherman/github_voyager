@@ -9,10 +9,12 @@ class SearchContainer extends Component {
     search: ""
   };
 
+  //initial request when SearchContainer mounts
   componentDidMount() {
     this.searchGithub("Github");
   }
 
+  //fetch request to github API
   searchGithub = query => {
     API.search(query)
       .then(res => res.json())
@@ -24,6 +26,7 @@ class SearchContainer extends Component {
       .catch(err => console.err(err));
   };
 
+  //set state with user input
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -31,12 +34,16 @@ class SearchContainer extends Component {
     });
   };
 
+  //execute request to Github on form submit
   handleFormSubmit = event => {
     event.preventDefault();
     this.searchGithub(this.state.search);
-    console.log("result: ", this.state.result);
+    this.setState({
+      search: ""
+    });
   };
 
+  //render searchform and Result components
   render() {
     const result = this.state.result;
     return (
