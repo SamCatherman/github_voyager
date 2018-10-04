@@ -1,5 +1,6 @@
 import React from "react";
-
+//destructured handlers passed to component from SearchContainer.
+//Updates SearchContainer's state on input change and form submit.
 const SearchForm = ({ handleFormSubmit, value, handleInputChange }) => (
   <form onSubmit={handleFormSubmit}>
     <input

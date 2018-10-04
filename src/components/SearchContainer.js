@@ -4,6 +4,7 @@ import Result from "./Result";
 import API from "../utils/API";
 
 class SearchContainer extends Component {
+  //initialize state to have an empty result object, and empty search term
   state = {
     result: {},
     search: ""
@@ -15,18 +16,16 @@ class SearchContainer extends Component {
   }
 
   //fetch request to github API
-  searchGithub = query => {
-    API.search(query)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          result: data
-        });
-      })
-      .catch(err => console.err(err));
-  };
+  async searchGithub(query) {
+    let res = await API.search(query);
+    let data = await res.json();
+    this.setState({
+      result: data
+    });
+  }
 
-  //set state with user input
+  //generic Input Handler to set state with user input -
+  //handles changes on multiple inputs using destructuring and [] syntax
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -34,7 +33,8 @@ class SearchContainer extends Component {
     });
   };
 
-  //execute request to Github on form submit
+  //execute request to Github on form submit,
+  //empty search Input after query submitted
   handleFormSubmit = event => {
     event.preventDefault();
     this.searchGithub(this.state.search);
@@ -43,7 +43,7 @@ class SearchContainer extends Component {
     });
   };
 
-  //render searchform and Result components
+  //render SearchForm and Result components
   render() {
     const result = this.state.result;
     return (

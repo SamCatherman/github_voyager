@@ -1,5 +1,7 @@
 import React from "react";
 
+//presentational component to display data returned from github API.
+//props argument destructured to make JSX more readable
 const Result = ({
   username,
   fullName,
