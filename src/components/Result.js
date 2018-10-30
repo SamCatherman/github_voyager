@@ -10,7 +10,8 @@ const Result = ({
   page,
   img,
   pubRepos,
-  email
+  email,
+  testProp
 }) => (
   <div className="result-container">
     <h4>{username}</h4>

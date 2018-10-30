@@ -13,6 +13,7 @@ class SearchContainer extends Component {
   //initial request when SearchContainer mounts
   componentDidMount() {
     this.searchGithub("Github");
+    return 1;
   }
 
   //fetch request to github API

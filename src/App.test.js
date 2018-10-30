@@ -1,9 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import App from "./App";
+import { shallow, instance } from "enzyme";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe("App", () => {
+  it("App Component renders without crashing", () => {
+    let wrapper = shallow(<App />);
+    expect(wrapper.find(".App").length).toEqual(1);
+  });
+
+  it("renders with a className of App", () => {
+    let wrapper = shallow(<App />);
+    expect(wrapper.props().className).toBe("App");
+  });
+
+  it("renders the search container", () => {
+    let wrapper = shallow(<App />);
+    expect(wrapper.find("SearchContainer").length).toEqual(1);
+  });
 });
